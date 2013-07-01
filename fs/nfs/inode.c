@@ -1192,6 +1192,7 @@ u32 _nfs_display_fhandle_hash(const struct nfs_fh *fh)
 	 * not on the result */
 	return ~crc32(0xFFFFFFFF, &fh->data[0], fh->size);
 }
+EXPORT_SYMBOL_GPL(_nfs_display_fhandle_hash);
 
 /*
  * _nfs_display_fhandle - display an NFS file handle on the console
@@ -1236,6 +1237,7 @@ void _nfs_display_fhandle(const struct nfs_fh *fh, const char *caption)
 		}
 	}
 }
+EXPORT_SYMBOL_GPL(_nfs_display_fhandle);
 #endif
 
 /**
