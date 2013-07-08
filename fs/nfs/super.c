@@ -2494,6 +2494,7 @@ struct dentry *nfs_fs_mount_common(struct nfs_server *server,
 			mntroot = ERR_PTR(error);
 			goto error_splat_bdi;
 		}
+		server->super = s;
 	}
 
 	if (!s->s_root) {
