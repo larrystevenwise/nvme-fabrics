@@ -576,7 +576,7 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
 			nqnlen = strlen(opts->subsysnqn);
 			if (nqnlen >= NVMF_NQN_SIZE) {
 				pr_err("%s needs to be < %d bytes\n",
-				opts->subsysnqn, NVMF_NQN_SIZE);
+				       opts->subsysnqn, NVMF_NQN_SIZE);
 				ret = -EINVAL;
 				goto out;
 			}
@@ -665,7 +665,7 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
 			nqnlen = strlen(p);
 			if (nqnlen >= NVMF_NQN_SIZE) {
 				pr_err("%s needs to be < %d bytes\n",
-					p, NVMF_NQN_SIZE);
+				       p, NVMF_NQN_SIZE);
 				ret = -EINVAL;
 				goto out;
 			}
