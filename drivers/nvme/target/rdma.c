@@ -1272,7 +1272,12 @@ static void nvmet_rdma_queue_connect_fail(struct rdma_cm_id *cm_id,
 {
 	WARN_ON_ONCE(queue->state != NVMET_RDMA_Q_CONNECTING);
 
-	pr_err("failed to connect queue\n");
+	mutex_lock(&nvmet_rdma_queue_mutex);
+	if (!list_empty(&queue->queue_list))
+		list_del_init(&queue->queue_list);
+	mutex_unlock(&nvmet_rdma_queue_mutex);
+
+	pr_err("failed to connect queue %d\n", queue->idx);
 	schedule_work(&queue->release_work);
 }
 
